@@ -10,7 +10,7 @@ public interface UserService {
 
     Optional<User> getById(Long idUser);
 
-    Optional<User> getByUsername(String username);
+    Optional<User> getByUsernameAndPassword(String username, String password);
 
     User save(User user);
 

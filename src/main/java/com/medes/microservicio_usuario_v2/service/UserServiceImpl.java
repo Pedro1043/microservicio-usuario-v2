@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getByUsername(String username) {
-        return userRepository.getByUsername(username);
+    public Optional<User> getByUsernameAndPassword(String username, String password) {
+        return userRepository.getByUsernameAndPassword(username, password);
     }
 
     @Override

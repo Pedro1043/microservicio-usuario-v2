@@ -23,8 +23,14 @@ public class UserController {
     public Optional<User> fetchById (@PathVariable Long idUser) {return userService.getById(idUser);}
 
     @CrossOrigin(origins = "http://localhost:5173")
-    @GetMapping("/getByUsername/{username}")
-    public Optional<User> fetchByUsername (@PathVariable String username) {return userService.getByUsername(username);}
+    @GetMapping("/getUser")
+    public ResponseEntity<User> fetchUser(@RequestParam String username, @RequestParam String password){
+        Optional<User> user = userService.getByUsernameAndPassword(username, password);
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
 
     @PostMapping("/add")
     public ResponseEntity<User> create(@RequestBody User user){
