@@ -22,7 +22,7 @@ public class UserController {
     @GetMapping("/getById/{idUser}")
     public Optional<User> fetchById (@PathVariable Long idUser) {return userService.getById(idUser);}
 
-    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
     @GetMapping("/getUser")
     public ResponseEntity<User> fetchUser(@RequestParam String username, @RequestParam String password){
         Optional<User> user = userService.getByUsernameAndPassword(username, password);
